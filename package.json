@@ -1,0 +1,39 @@
+{
+  "name": "react-redux-todomvc-test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "1.0.14",
+    "redux": "^3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.4",
+    "@storybook/addon-knobs": "^4.1.4",
+    "@storybook/addon-links": "^4.1.4",
+    "@storybook/addons": "^4.1.4",
+    "@storybook/react": "^4.1.4",
+    "babel-loader": "^8.0.4",
+    "diffable-html": "^3.0.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "prettier": "^1.15.3",
+    "react-test-renderer": "^16.7.0"
+  }
+}
