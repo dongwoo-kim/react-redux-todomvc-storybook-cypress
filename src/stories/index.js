@@ -1,53 +1,56 @@
 import React from 'react';
-
 import {storiesOf} from '@storybook/react';
-import {Header} from '../components/Header';
-import {TodoItem} from '../components/TodoItem';
-import '../components/App.css';
+import {StaticRouter, Route} from 'react-router-dom';
+import {withKnobs, radios, boolean} from '@storybook/addon-knobs';
+import {withStore} from './addons/store';
+import App from '../components/App';
 
-const stories = storiesOf('Todo-App', module);
+const stories = storiesOf('Todo-App', module)
+  .addDecorator(withKnobs)
+  .addDecorator(withStore);
 
-stories.add('Header', () => (
-  <div className="todoapp">
-    <Header addTodo={() => {}} />
-  </div>
-));
+stories.add(
+  'App',
+  () => {
+    const options = {
+      All: '/All',
+      Active: '/Active',
+      Completed: '/Completed'
+    };
 
-stories.add('TodoItem - Normal', () => (
-  <div className="todoapp">
-    <ul className="todo-list">
-      <TodoItem
-        id={1}
-        text="Have a Breakfast"
-        comleted={false}
-        editing={false}
-      />
-    </ul>
-  </div>
-));
+    const location = radios('Filter', options, options.All);
 
-stories.add('TodoItem - Completed', () => (
-  <div className="todoapp">
-    <ul className="todo-list">
-      <TodoItem
-        id={1}
-        text="Have a Breakfast"
-        comleted={true}
-        editing={false}
-      />
-    </ul>
-  </div>
-));
+    return (
+      <StaticRouter location={location} context={{}}>
+        <Route path="/:nowShowing" component={App} />
+      </StaticRouter>
+    );
+  },
+  {
+    state: () => {
+      const isAllCompleted = boolean('Complete All', false);
+      const editing = boolean('Editing', false) ? 3 : null;
 
-stories.add('TodoItem - Editing', () => (
-  <div className="todoapp">
-    <ul className="todo-list">
-      <TodoItem
-        id={1}
-        text="Have a Breakfast"
-        comleted={false}
-        editing={true}
-      />
-    </ul>
-  </div>
-));
+      return {
+        todos: [
+          {
+            id: 1,
+            text: 'Have a Breakfast',
+            completed: isAllCompleted || false
+          },
+          {
+            id: 2,
+            text: 'Have a Lunch',
+            completed: isAllCompleted || true
+          },
+          {
+            id: 3,
+            text: 'Have a Dinner',
+            completed: isAllCompleted || false
+          }
+        ],
+        editing
+      };
+    }
+  }
+);

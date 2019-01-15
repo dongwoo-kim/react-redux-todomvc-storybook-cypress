@@ -9,7 +9,6 @@
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^4.0.8",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
     "redux-thunk": "^2.3.0"
@@ -34,11 +33,7 @@
     "@storybook/addons": "^4.1.4",
     "@storybook/react": "^4.1.4",
     "babel-loader": "^8.0.4",
-    "diffable-html": "^3.0.0",
-    "jest": "^23.6.0",
-    "jest-cli": "^23.6.0",
     "mini-css-extract-plugin": "^0.5.0",
-    "prettier": "^1.15.3",
-    "react-test-renderer": "^16.7.0"
+    "prettier": "^1.15.3"
   }
 }
