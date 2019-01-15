@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { keyCodes } from '../constants';
-import { addTodo } from '../actions';
+import {connect} from 'react-redux';
+import {keyCodes} from '../constants';
+import {addTodo} from '../actions';
 
 export class Header extends React.Component {
   static propTypes = {
     addTodo: PropTypes.func.isRequired
   };
 
-  state = { text: '' };
+  state = {text: ''};
 
   onKeyDown(ev) {
     if (ev.keyCode === keyCodes.ENTER) {
@@ -17,7 +17,7 @@ export class Header extends React.Component {
 
       if (text) {
         this.props.addTodo(text);
-        this.setState({ text: '' });
+        this.setState({text: ''});
       }
     }
   }
@@ -46,5 +46,5 @@ export class Header extends React.Component {
 
 export default connect(
   null,
-  { addTodo }
+  {addTodo}
 )(Header);

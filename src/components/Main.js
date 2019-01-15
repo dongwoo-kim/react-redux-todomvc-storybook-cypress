@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {compose} from 'redux';
+import {withRouter} from 'react-router';
 import TodoItem from './TodoItem';
-import { connect } from 'react-redux';
-import { listFilters } from '../constants';
-import { toggleAllTodos } from '../actions';
+import {connect} from 'react-redux';
+import {listFilters} from '../constants';
+import {toggleAllTodos} from '../actions';
 
-function Main({ todos, toggleAllTodos }) {
+function Main({todos, isCompletedAll, toggleAllTodos}) {
   return (
     <section className="main">
-      <input type="checkbox" className="toggle-all" onClick={toggleAllTodos} />
+      <input
+        type="checkbox"
+        className="toggle-all"
+        checked={isCompletedAll}
+        onChange={toggleAllTodos}
+      />
       <ul className="todo-list">
         {todos.map(todo => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} {...todo} />
         ))}
       </ul>
     </section>
@@ -35,12 +42,19 @@ function getFilteredTodos(todos, nowShowing) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { todos: getFilteredTodos(state.todos, state.nowShowing) };
+  const {nowShowing = listFilters.ALL} = ownProps.match.params;
+  const todos = getFilteredTodos(state.todos, nowShowing);
+  const isCompletedAll = todos.every(todo => todo.completed);
+
+  return {todos, isCompletedAll};
 };
 
-const mapDispatchToPorps = { toggleAllTodos };
+const mapDispatchToPorps = {toggleAllTodos};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToPorps
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToPorps
+  )
 )(Main);

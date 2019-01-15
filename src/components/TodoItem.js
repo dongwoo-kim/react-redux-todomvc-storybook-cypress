@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keyCodes } from '../constants';
-import { connect } from 'react-redux';
+import {keyCodes} from '../constants';
+import {connect} from 'react-redux';
 import {
   addTodo,
   removeTodo,
@@ -12,18 +12,20 @@ import {
 
 export class TodoItem extends React.Component {
   static propTypes = {
-    todo: PropTypes.object.isRequired,
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    editing: PropTypes.bool.isRequired,
     toggleTodo: PropTypes.func.isRequired,
     setEditing: PropTypes.func.isRequired,
     removeTodo: PropTypes.func.isRequired,
-    updateTodo: PropTypes.func.isRequired,
-    isEditing: PropTypes.bool.isRequired
+    updateTodo: PropTypes.func.isRequired
   };
 
   componentDidUpdate() {
-    const { isEditing } = this.props;
+    const {editing} = this.props;
 
-    if (isEditing) {
+    if (editing) {
       const textLength = this.input.value.length;
 
       this.input.focus();
@@ -32,11 +34,11 @@ export class TodoItem extends React.Component {
   }
 
   save() {
-    const { updateTodo, todo, setEditing } = this.props;
+    const {updateTodo, id, setEditing} = this.props;
     const text = this.input.value.trim();
 
     if (text) {
-      updateTodo(todo.id, text);
+      updateTodo(id, text);
     }
     setEditing(null);
   }
@@ -55,10 +57,17 @@ export class TodoItem extends React.Component {
   }
 
   render() {
-    const { todo, toggleTodo, setEditing, removeTodo, isEditing } = this.props;
-    const { id, text, completed } = todo;
+    const {
+      id,
+      text,
+      completed,
+      toggleTodo,
+      setEditing,
+      removeTodo,
+      editing
+    } = this.props;
     const liClassName = `${completed ? 'completed' : ''} ${
-      isEditing ? 'editing' : ''
+      editing ? 'editing' : ''
     }`;
 
     return (
@@ -86,7 +95,7 @@ export class TodoItem extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  isEditing: ownProps.todo.id === state.editing
+  editing: ownProps.id === state.editing
 });
 
 const mapDispatchToProps = {

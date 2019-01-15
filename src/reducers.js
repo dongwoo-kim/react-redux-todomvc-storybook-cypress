@@ -1,5 +1,4 @@
 import {combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux';
 import {
   ADD_TODO,
   TOGGLE_TODO,
@@ -8,26 +7,17 @@ import {
   TOGGLE_ALL_TODOS,
   CLEAR_COMPLETED_TODOS,
   SET_EDITING,
-  SET_FILTER
+  RESET_TODOS
 } from './actions';
-import {listFilters} from './constants';
 
 const initialState = {
-  todos: [{
-    id: 1,
-    text: '아침먹기',
-    completed: false
-  }],
-  editing: null,
-  nowShowing: listFilters.ALL
+  todos: [],
+  editing: null
 };
 
 function addTodo(todos, text) {
   const maxId = Math.max(...todos.map(todo => todo.id), 0);
-  return [
-    ...todos,
-    {id: maxId + 1, text, completed: false}
-  ];
+  return [...todos, {id: maxId + 1, text, completed: false}];
 }
 
 function removeTodo(todos, id) {
@@ -64,6 +54,8 @@ function clearCompletedTodos(todos) {
 
 function todos(state = initialState.todos, action) {
   switch (action.type) {
+    case RESET_TODOS:
+      return action.todos;
     case ADD_TODO:
       return addTodo(state, action.text);
     case TOGGLE_TODO:
@@ -90,18 +82,7 @@ function editing(state = initialState.editing, action) {
   }
 }
 
-function nowShowing(state = initialState.nowShowing, action) {
-  switch (action.type) {
-    case SET_FILTER:
-      return action.filter;
-    default:
-      return state;
-  }
-}
-
 export default combineReducers({
   todos,
-  editing,
-  nowShowing,
-  router: routerReducer
+  editing
 });

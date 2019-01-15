@@ -1,53 +1,53 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { Header } from '../components/Header';
-import { TodoItem } from '../components/TodoItem';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
-
+import {storiesOf} from '@storybook/react';
+import {Header} from '../components/Header';
+import {TodoItem} from '../components/TodoItem';
 import '../components/App.css';
 
-const stories = storiesOf('TodoApp', module);
+const stories = storiesOf('Todo-App', module);
 
-stories.addDecorator(withKnobs);
+stories.add('Header', () => (
+  <div className="todoapp">
+    <Header addTodo={() => {}} />
+  </div>
+));
 
-stories
-  .add('Header', () => (
-    <div className="todoapp">
-      <Header addTodo={action('addTodo')} />
-    </div>
-  ))
-  .add('TodoItem - 일반', () => (
-    <div className="todoapp">
-      <ul className="todo-list">
-        <TodoItem
-          isEditing={false}
-          todo={{ id: 1, text: '아침먹기', completed: false }}
-        />
-      </ul>
-    </div>
-  ))
-  .add('TodoItem - 완료됨', () => (
-    <div className="todoapp">
-      <ul className="todo-list">
-        <TodoItem
-          isEditing={false}
-          todo={{ id: 1, text: '아침먹기', completed: true }}
-        />
-      </ul>
-    </div>
-  ))
-  .add('TodoItem - 수정중', () => (
-    <div className="todoapp">
-      <ul className="todo-list">
-        <TodoItem
-          isEditing={true}
-          todo={{ id: 1, text: '아침먹기', completed: true }}
-        />
-      </ul>
-    </div>
-  ));
-// .add('TodoItem', () => (
+stories.add('TodoItem - Normal', () => (
+  <div className="todoapp">
+    <ul className="todo-list">
+      <TodoItem
+        id={1}
+        text="Have a Breakfast"
+        comleted={false}
+        editing={false}
+      />
+    </ul>
+  </div>
+));
 
-// ));
+stories.add('TodoItem - Completed', () => (
+  <div className="todoapp">
+    <ul className="todo-list">
+      <TodoItem
+        id={1}
+        text="Have a Breakfast"
+        comleted={true}
+        editing={false}
+      />
+    </ul>
+  </div>
+));
+
+stories.add('TodoItem - Editing', () => (
+  <div className="todoapp">
+    <ul className="todo-list">
+      <TodoItem
+        id={1}
+        text="Have a Breakfast"
+        comleted={false}
+        editing={true}
+      />
+    </ul>
+  </div>
+));
