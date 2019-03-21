@@ -33,6 +33,7 @@ export class Header extends React.Component {
       <header className="header">
         <h1>todos</h1>
         <input
+          data-testid="todo-input"
           className="new-todo"
           placeholder="What needs to be done?"
           value={this.state.text}

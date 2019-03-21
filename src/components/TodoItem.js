@@ -71,7 +71,7 @@ export class TodoItem extends React.Component {
     }`;
 
     return (
-      <li className={liClassName}>
+      <li className={liClassName} data-testid="todo-item">
         <div className="view">
           <input
             className="toggle"

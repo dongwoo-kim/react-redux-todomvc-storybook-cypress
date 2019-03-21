@@ -52,7 +52,7 @@ function clearCompletedTodos(todos) {
   return todos.filter(todo => !todo.completed);
 }
 
-function todos(state = initialState.todos, action) {
+export function todos(state = initialState.todos, action) {
   switch (action.type) {
     case RESET_TODOS:
       return action.todos;
@@ -73,7 +73,7 @@ function todos(state = initialState.todos, action) {
   }
 }
 
-function editing(state = initialState.editing, action) {
+export function editing(state = initialState.editing, action) {
   switch (action.type) {
     case SET_EDITING:
       return action.id;

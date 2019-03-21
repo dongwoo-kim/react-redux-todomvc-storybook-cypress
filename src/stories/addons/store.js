@@ -3,7 +3,7 @@ import React from 'react';
 import {action} from '@storybook/addon-actions';
 import {Provider} from 'react-redux';
 
-function createMockStore(initialState) {
+export function createMockStore(initialState) {
   let state = initialState;
   const listeners = [];
 

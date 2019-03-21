@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {listFilters} from '../constants';
 import {toggleAllTodos} from '../actions';
 
-function Main({todos, isCompletedAll, toggleAllTodos}) {
+export function Main({todos, isCompletedAll, toggleAllTodos}) {
   return (
     <section className="main">
       <input
