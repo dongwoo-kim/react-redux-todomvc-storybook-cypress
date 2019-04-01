@@ -1,8 +1,8 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import {StaticRouter, Route} from 'react-router-dom';
-import {withKnobs, radios, boolean} from '@storybook/addon-knobs';
-import {withStore} from './addons/store';
+import { storiesOf } from '@storybook/react';
+import { StaticRouter, Route } from 'react-router-dom';
+import { withKnobs, radios, boolean } from '@storybook/addon-knobs';
+import { withStore } from './addons/store';
 import App from '../components/App';
 
 const stories = storiesOf('Todo-App', module)

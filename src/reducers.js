@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import {
   ADD_TODO,
   TOGGLE_TODO,
@@ -17,7 +17,7 @@ const initialState = {
 
 function addTodo(todos, text) {
   const maxId = Math.max(...todos.map(todo => todo.id), 0);
-  return [...todos, {id: maxId + 1, text, completed: false}];
+  return [...todos, { id: maxId + 1, text, completed: false }];
 }
 
 function removeTodo(todos, id) {
@@ -28,7 +28,7 @@ function toggleTodo(todos, id) {
   const idx = todos.findIndex(todo => todo.id === id);
   const todo = todos[idx];
   const newTodos = [...todos];
-  newTodos[idx] = {...todo, completed: !todo.completed};
+  newTodos[idx] = { ...todo, completed: !todo.completed };
 
   return newTodos;
 }
@@ -37,7 +37,7 @@ function updateTodo(todos, id, text) {
   const idx = todos.findIndex(todo => todo.id === id);
   const todo = todos[idx];
   const newTodos = [...todos];
-  newTodos[idx] = {...todo, text};
+  newTodos[idx] = { ...todo, text };
 
   return newTodos;
 }
@@ -45,7 +45,7 @@ function updateTodo(todos, id, text) {
 function toggleAllTodos(todos) {
   const completed = !todos.every(todo => todo.completed);
 
-  return todos.map(todo => ({...todo, completed}));
+  return todos.map(todo => ({ ...todo, completed }));
 }
 
 function clearCompletedTodos(todos) {

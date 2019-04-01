@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
-import {action} from '@storybook/addon-actions';
-import {Provider} from 'react-redux';
+import { action } from '@storybook/addon-actions';
+import { Provider } from 'react-redux';
 
 export function createMockStore(initialState) {
   let state = initialState;
@@ -33,7 +33,7 @@ export function createMockStore(initialState) {
 }
 
 let store = createMockStore({});
-let lastStoryInfo = {kind: '', story: ''};
+let lastStoryInfo = { kind: '', story: '' };
 
 function isSameStory(s1, s2) {
   return s1.kind === s2.kind && s1.story === s2.story;

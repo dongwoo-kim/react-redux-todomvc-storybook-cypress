@@ -17,37 +17,37 @@ function dispatchWithSync(action) {
 }
 
 export function addTodo(text) {
-  return dispatchWithSync({type: ADD_TODO, text});
+  return dispatchWithSync({ type: ADD_TODO, text });
 }
 
 export function toggleTodo(id) {
-  return dispatchWithSync({type: TOGGLE_TODO, id});
+  return dispatchWithSync({ type: TOGGLE_TODO, id });
 }
 
 export function removeTodo(id) {
-  return dispatchWithSync({type: REMOVE_TODO, id});
+  return dispatchWithSync({ type: REMOVE_TODO, id });
 }
 
 export function updateTodo(id, text) {
-  return dispatchWithSync({type: UPDATE_TODO, id, text});
+  return dispatchWithSync({ type: UPDATE_TODO, id, text });
 }
 
 export function toggleAllTodos() {
-  return dispatchWithSync({type: TOGGLE_ALL_TODOS});
+  return dispatchWithSync({ type: TOGGLE_ALL_TODOS });
 }
 
 export function clearCompletedTodos() {
-  return dispatchWithSync({type: CLEAR_COMPLETED_TODOS});
+  return dispatchWithSync({ type: CLEAR_COMPLETED_TODOS });
 }
 
 export function setEditing(id) {
-  return dispatchWithSync({type: SET_EDITING, id});
+  return dispatchWithSync({ type: SET_EDITING, id });
 }
 
 export function resetTodos() {
   return async (dispatch, getState) => {
-    const {data: todos} = await axios.get('/todos');
+    const { data: todos } = await axios.get('/todos');
 
-    dispatch({type: RESET_TODOS, todos});
+    dispatch({ type: RESET_TODOS, todos });
   };
 }

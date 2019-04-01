@@ -1,10 +1,10 @@
 import React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import {createStore} from './store';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from './store';
 import App from './components/App';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {resetTodos} from './actions';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { resetTodos } from './actions';
 
 const store = createStore({});
 store.dispatch(resetTodos());

@@ -1,17 +1,17 @@
 import React from 'react';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import FilterButton from './FilterButton';
 import ClearCompletedButton from './ClearCompletedButton';
-import {listFilters} from '../constants';
+import { listFilters } from '../constants';
 
-const {ALL, ACTIVE, COMPLETED} = listFilters;
+const { ALL, ACTIVE, COMPLETED } = listFilters;
 
 class Footer extends React.PureComponent {
   render() {
-    const {leftCount} = this.props;
+    const { leftCount } = this.props;
 
     return (
       <footer className="footer">
@@ -29,7 +29,7 @@ class Footer extends React.PureComponent {
   }
 
   renderFilterButton(type) {
-    const {nowShowing = listFilters.ALL} = this.props.match.params;
+    const { nowShowing = listFilters.ALL } = this.props.match.params;
     const isSelected = type === nowShowing;
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {keyCodes} from '../constants';
-import {connect} from 'react-redux';
+import { keyCodes } from '../constants';
+import { connect } from 'react-redux';
 import {
   addTodo,
   removeTodo,
@@ -23,7 +23,7 @@ export class TodoItem extends React.Component {
   };
 
   componentDidUpdate() {
-    const {editing} = this.props;
+    const { editing } = this.props;
 
     if (editing) {
       const textLength = this.input.value.length;
@@ -34,7 +34,7 @@ export class TodoItem extends React.Component {
   }
 
   save() {
-    const {updateTodo, id, setEditing} = this.props;
+    const { updateTodo, id, setEditing } = this.props;
     const text = this.input.value.trim();
 
     if (text) {
