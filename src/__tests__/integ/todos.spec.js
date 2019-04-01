@@ -30,12 +30,12 @@ it('should render todo Items', () => {
     todos: [
       {
         id: 1,
-        text: 'Have a Breakfast',
+        text: 'Have Breakfast',
         completed: true
       },
       {
         id: 2,
-        text: 'Have a Lunch',
+        text: 'Have Lunch',
         completed: false
       }
     ]
@@ -44,9 +44,9 @@ it('should render todo Items', () => {
   const { getAllByTestId } = renderWithStore(store);
   const todoItems = getAllByTestId('todo-item');
 
-  expect(todoItems[0]).toHaveTextContent('Have a Breakfast');
+  expect(todoItems[0]).toHaveTextContent('Have Breakfast');
   expect(todoItems[0]).toHaveClass('completed');
-  expect(todoItems[1]).toHaveTextContent('Have a Lunch');
+  expect(todoItems[1]).toHaveTextContent('Have Lunch');
   expect(todoItems[1]).not.toHaveClass('completed');
 });
 
@@ -55,7 +55,7 @@ it('should trigger TOGGLE_TODO when click checkbox', () => {
     todos: [
       {
         id: 1,
-        text: 'Have a Breakfast',
+        text: 'Have Breakfast',
         completed: true
       }
     ]
@@ -77,7 +77,7 @@ it('should append todo item when input new todo', async () => {
     todos: [
       {
         id: 1,
-        text: 'Have a Breakfast',
+        text: 'Have Breakfast',
         completed: true
       }
     ]

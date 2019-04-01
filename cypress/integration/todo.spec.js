@@ -1,12 +1,12 @@
 const todos = [
   {
     id: 1,
-    text: 'Have a Breakfast',
+    text: 'Have Breakfast',
     completed: true
   },
   {
     id: 2,
-    text: 'Have a Lunch',
+    text: 'Have Lunch',
     completed: false
   }
 ];
@@ -22,10 +22,10 @@ describe('should render todo items', () => {
 
     cy.get('[data-testid=todo-item').within(items => {
       expect(items).to.have.length(2);
-      expect(items[0]).to.contain('Have a Breakfast');
+      expect(items[0]).to.contain('Have Breakfast');
       expect(items[0]).to.have.class('completed');
 
-      expect(items[1]).to.contain('Have a Lunch');
+      expect(items[1]).to.contain('Have Lunch');
       expect(items[1]).not.to.have.class('completed');
     });
   });
@@ -36,7 +36,7 @@ describe('should render todo items', () => {
     cy.get('[data-testid=todo-item').within(items => {
       expect(items).to.have.length(1);
 
-      expect(items[0]).to.contain('Have a Lunch');
+      expect(items[0]).to.contain('Have Lunch');
       expect(items[0]).not.to.have.class('completed');
     });
   });
@@ -47,7 +47,7 @@ describe('should render todo items', () => {
     cy.get('[data-testid=todo-item').within(items => {
       expect(items).to.have.length(1);
 
-      expect(items[0]).to.contain('Have a Breakfast');
+      expect(items[0]).to.contain('Have Breakfast');
       expect(items[0]).to.have.class('completed');
     });
   });
@@ -55,7 +55,7 @@ describe('should render todo items', () => {
 
 it('Add Todo', () => {
   const reqStub = cy.stub();
-  cy.route({method: 'PUT', url: '/todos', onRequest: reqStub}).as('sync');
+  cy.route({ method: 'PUT', url: '/todos', onRequest: reqStub }).as('sync');
   cy.visit('/All');
 
   cy.get('[data-testid="todo-input"]').type('Have a Coffee{enter}');

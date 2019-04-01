@@ -35,17 +35,17 @@ stories.add(
         todos: [
           {
             id: 1,
-            text: 'Have a Breakfast',
+            text: 'Have Breakfast',
             completed: isAllCompleted || false
           },
           {
             id: 2,
-            text: 'Have a Lunch',
+            text: 'Have Lunch',
             completed: isAllCompleted || true
           },
           {
             id: 3,
-            text: 'Have a Dinner',
+            text: 'Have Dinner',
             completed: isAllCompleted || false
           }
         ],
